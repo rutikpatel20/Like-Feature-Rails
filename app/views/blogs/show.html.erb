@@ -2,6 +2,12 @@
 
 <%= render @blog %>
 
+<form action="/likes" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+  <input type="hidden" name="like[blog_id]" value="<%= @blog.id %>">
+  <input type="submit" value="Like">
+</form>
+
 <div>
   <%= link_to "Edit this blog", edit_blog_path(@blog) %> |
   <%= link_to "Back to blogs", blogs_path %>

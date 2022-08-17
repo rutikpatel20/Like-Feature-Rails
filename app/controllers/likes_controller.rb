@@ -4,19 +4,19 @@ class LikesController < ApplicationController
     if !@like.save
       flash[:notice] = @like.errors.full_messages.to_sentence
     end
-    redirect_to @like.book
+    redirect_to @like.blog
   end
 
   def destroy
     @like = current_user.likes.find(params[:id])
     post = @like.post
     @like.destroy
-    redirect_to book
+    redirect_to blog
   end
 
   private
 
   def like_params
-    params.require(:like).permit(:book_id)
+    params.require(:like).permit(:blog_id)
   end
 end
